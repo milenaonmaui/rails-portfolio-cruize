@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cruise_id: 1
+  user_id: 1
+  num_adults: 1
+  num_children: 1
+
+two:
+  cruise_id: 1
+  user_id: 1
+  num_adults: 1
+  num_children: 1
