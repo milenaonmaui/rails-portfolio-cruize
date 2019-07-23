@@ -5,7 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+category_list = [
+    "Whalewatch", "Snorkel", "Dinner Cruises", "Dolphin Watch"
+]
 cruise_list = [
     [ "Classic Whalewatch", "Whalewatch", 85, 45, 70, 5],
     [ "Discount Whalewatch", "Whalewatch", 85, 30, 50, 5],
@@ -19,6 +21,12 @@ cruise_list = [
     [ "Dolphin Watch Full Day", "Dolphin Watch", 70, 60, 120, 5]
   ]
   
-  cruise_list.each do |name, category, capacity, price_child, price_adult, min_age|
-    Cruise.create( name: name, category: category, capacity: capacity, price_child: price_child, price_adult: price_adult, min_age: min_age)
+  category_list.each do |name| 
+    Category.create(name: name)
   end
+
+  cruise_list.each do |name, category, capacity, price_child, price_adult, min_age|
+    cruise = Cruise.new( name: name, capacity: capacity, price_child: price_child, price_adult: price_adult, min_age: min_age)
+    cruise.category = Category.find_by(:name => category)
+    cruise.save
+end
