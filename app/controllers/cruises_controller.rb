@@ -1,7 +1,13 @@
 class CruisesController < ApplicationController
 
     def index
-        @cruises = Cruise.all
+        
+        if params[:categories]
+          @cruises = Cruise.by_category(params[:categories])
+        else
+          @cruises = Cruise.all 
+        end
+    
     end
 
     def show
