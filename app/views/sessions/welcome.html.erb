@@ -1,7 +1,6 @@
-<h1>Welcome <%= current_user.name if logged_in? %></h1>
+<h1>Welcome To Adventure Cruises </h1>
 
-<%= link_to "Sign Up", signup_path%>
+<div class="cruise_list">
+    <h3><%= link_to "View All Cruises", cruises_path%></h3>
 
-<%= link_to "Login", login_path%>
-
-<%= link_to "Logout", logout_path, method: :delete%>
+</div>
