@@ -1,3 +1,9 @@
 <h1><%=@cruise.name %></h1>
-<h2>Category: <%= @cruise.category %></h2>
+<h2>Category: <%= @cruise.category.name %></h2>
 <h3>Minimum age: <%= @cruise.min_age %></h3>
+<h3>Price Adult: $<%= @cruise.price_adult %></h3>
+<%if @cruise.min_age <=12%>
+    <h3>Price Child: $<%= @cruise.price_child %></h3>
+<%end%>
+<%= link_to "Book It", new_cruise_booking_path(@cruise) %>
+   

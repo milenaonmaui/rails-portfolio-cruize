@@ -1,3 +1,4 @@
+<h2>Sing in to your account</h2>
 <%= form_for @user, url: login_path, method: :post do |f| %>
   <%=f.label :email%>
   <%=f.email_field :email%><br>
@@ -5,3 +6,5 @@
   <%= f.password_field :password %><br>
   <%=f.submit "Sign In"%>
 <%end%>
+<br>
+<h3><%=link_to "Or create a new account", signup_path%></h3>
