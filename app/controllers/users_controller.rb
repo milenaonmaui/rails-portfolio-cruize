@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        if params[:id] == current_user.id
+        if params[:id].to_i == current_user.id
             @user = User.find_by_id(params[:id])
         else
           flash[:error] = "You are not allowed to view this page"

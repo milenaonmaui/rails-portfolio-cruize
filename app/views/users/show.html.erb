@@ -1,6 +1,6 @@
 <h2><%=@user.name%>'s Bookings</h2>
-<<ul>
+<ul>
   <% @user.bookings.each do |booking| %>
-    <li><%= link_to booking.cruise.name, booking_path(@booking) %></li>
+    <li><%= link_to booking.cruise.name, booking_path(booking) %></li>
   <% end %>
 </ul>
