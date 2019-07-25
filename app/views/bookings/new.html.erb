@@ -1,14 +1,5 @@
 <h1>Book a Cruise</h1>
-
-<%= form_for [@cruise, @booking] do |f|%>
-  <% if @cruise %>
-    <p>Cruise: <%=@cruise.name%></p>
-  <% else%>
-    <%=f.label :cruise%>
-    <%=f.collection_select :cruise_id, Cruise.all, :id, :name %><br>
-  <%end%>
-  <%=f.label :number_adults%>
-  <%=f.number_field :num_adults %><br>
- 
-  <%=f.submit "Book It"%>
+<% if @booking.cruise%>
+  <h2>Booking for <%=@booking.cruise.name %> </h2>
 <%end%>
+<%= render partial: "form" %>

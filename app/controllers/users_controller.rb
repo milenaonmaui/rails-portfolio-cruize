@@ -15,6 +15,15 @@ class UsersController < ApplicationController
 
     end
 
+    def show
+        if params[:id] == current_user.id
+            @user = User.find_by_id(params[:id])
+        else
+          flash[:error] = "You are not allowed to view this page"
+          redirect_to '/'
+        end
+    end
+
     private
 
     def user_params

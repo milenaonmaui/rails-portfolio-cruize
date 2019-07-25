@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
     helper_method :logged_in?, :current_user
-    
+
     def logged_in?
         current_user
     end
@@ -10,4 +10,11 @@ class ApplicationController < ActionController::Base
         current_user ||= User.find_by_id(session[:user_id])
     end
 
+    private
+
+    def require_logged_in
+        if !logged_in?
+            redirect_to login_path
+        end
+    end
 end
