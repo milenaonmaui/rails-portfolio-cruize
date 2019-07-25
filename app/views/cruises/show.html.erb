@@ -5,5 +5,5 @@
 <%if @cruise.min_age <=12%>
     <h3>Price Child: $<%= @cruise.price_child %></h3>
 <%end%>
-<%= link_to "Book It", new_cruise_booking_path(@cruise) %>
+<%= link_to "Book It", new_cruise_booking_path(@cruise), class: "btn btn-primary"%>
    
