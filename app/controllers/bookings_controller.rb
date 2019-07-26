@@ -15,6 +15,7 @@ class BookingsController < ApplicationController
         @booking = Booking.new(booking_params)
         @booking.user_id = current_user.id
         if @booking.save
+           flash[:success] = "Booking created!"
            redirect_to booking_path(@booking)
         else
            flash[:error] = "#{@booking.errors.full_messages}"

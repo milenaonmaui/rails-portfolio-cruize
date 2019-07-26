@@ -6,6 +6,8 @@ class Booking < ApplicationRecord
 
     
     def cost
-        num_adults*self.cruise.price_adult + num_children*self.cruise.price_child
+        total = num_adults*self.cruise.price_adult
+        total += num_children*self.cruise.price_child if num_children
+        return total
     end
 end
