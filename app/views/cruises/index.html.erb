@@ -10,6 +10,6 @@
 <hr>
 <div class="cruise_list">
     <%@cruises.each do |cruise|%>
-        <p><%=cruise.name%> <%=link_to "View details", cruise_path(cruise)%></p>
+        <p><%=cruise.name%> - <%= "ADULTS only!" if !cruise.children_allowed? %> - <%=link_to "View details", cruise_path(cruise)%></p>
     <%end%>
 </div>
