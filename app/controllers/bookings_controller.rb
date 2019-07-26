@@ -24,7 +24,7 @@ class BookingsController < ApplicationController
     end
 
     def show
-        @booking = Booking.find_by_id(params[:id])
+        find_booking
     end
 
     def index
@@ -32,17 +32,18 @@ class BookingsController < ApplicationController
     end
 
     def edit
-        @booking = Booking.find_by_id(params[:id])
+        find_booking
     end
 
     def update
-        @booking = Booking.find_by_id(params[:id])
+        find_booking
         @booking.update(booking_params)
         redirect_to booking_path(@booking.cruise, @booking)
     end
 
     def destroy
-        @booking = Booking.find_by_id(params[:id]).destroy
+        find_booking
+        @booking.destroy
         redirect_to user_path(current_user)
     end
 
@@ -50,5 +51,13 @@ class BookingsController < ApplicationController
 
 		def booking_params
 			params.require(:booking).permit(:num_adults, :num_children, :user_id, :cruise_id)
-		end
+        end
+        
+        def find_booking
+            @booking = Booking.find_by_id(params[:id])
+            if !@booking
+                flash[:error] = "Invalid booking!"
+                redirect_to user_path(current_user)
+            end
+        end
 end
