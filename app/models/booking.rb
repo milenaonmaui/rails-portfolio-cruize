@@ -2,7 +2,7 @@ class Booking < ApplicationRecord
     belongs_to :user
     belongs_to :cruise
 
-    validates :num_adults, :numericality => {greater_than: 0}
+    validates :num_adults, :numericality => {greater_than: 0, :message => "At least one adult must be present"}
 
     
     def cost

@@ -11,14 +11,13 @@ class BookingsController < ApplicationController
     end
 
     def create
-        #binding.pry
         @booking = Booking.new(booking_params)
         @booking.user_id = current_user.id
         if @booking.save
            flash[:success] = "Booking created!"
            redirect_to booking_path(@booking)
         else
-           flash[:error] = "#{@booking.errors.full_messages}"
+           flash[:error] = "#{@booking.errors.messages.values.join(". ")}"
            render :new
         end    
     end
