@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
 
     def require_logged_in
         if !logged_in?
+            flash[:error] = "Please log in first"
             redirect_to login_path
         end
     end
