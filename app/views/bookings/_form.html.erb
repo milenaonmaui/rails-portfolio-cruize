@@ -1,11 +1,15 @@
 
 <%= form_for @booking do |f|%>
-  <%= cruise_select(@booking.cruise, @booking) %>
-  <%=f.label :number_adults%>
-  <%=f.number_field :num_adults %><br>
-  <% if @booking.cruise.children_allowed?%>
-    <%=f.label :number_children%>
-    <%=f.number_field :num_children %><br>
-  <%end%>
-  <%=f.submit "Submit"%>
+    <%= cruise_select(@booking.cruise, @booking) %>
+    <div>
+        <%=f.label :number_adults%>
+        <%=f.number_field :num_adults, min:0 %>
+    </div>
+    <% if @booking.cruise.children_allowed?%>
+        <div>
+            <%=f.label :number_children%>
+            <%=f.number_field :num_children, min:0 %>
+        </div>
+    <%end%>
+    <%=f.submit "Submit"%>
 <%end%>

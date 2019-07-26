@@ -6,7 +6,8 @@ class BookingsController < ApplicationController
             @booking = @cruise.bookings.build
             @booking.user = current_user
         else
-            @booking = Booking.new
+            flash[:error] = "Select a valid cruise"
+            redirect_to cruises_path
         end
     end
 
@@ -26,6 +27,10 @@ class BookingsController < ApplicationController
         @booking = Booking.find_by_id(params[:id])
     end
 
+    def index
+        redirect_to user_path(current_user)
+    end
+
     def edit
         @booking = Booking.find_by_id(params[:id])
     end
@@ -34,6 +39,11 @@ class BookingsController < ApplicationController
         @booking = Booking.find_by_id(params[:id])
         @booking.update(booking_params)
         redirect_to booking_path(@booking.cruise, @booking)
+    end
+
+    def destroy
+        @booking = Booking.find_by_id(params[:id]).destroy
+        redirect_to user_path(current_user)
     end
 
     private
