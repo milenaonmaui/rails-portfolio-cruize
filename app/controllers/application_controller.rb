@@ -27,4 +27,8 @@ class ApplicationController < ActionController::Base
             redirect_to login_path
         end
     end
+
+    def display_errors(obj)
+        flash[:error] = "#{obj.errors.full_messages.join(". ")}"
+    end
 end

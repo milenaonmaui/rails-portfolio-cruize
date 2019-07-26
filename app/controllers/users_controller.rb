@@ -10,6 +10,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to cruises_path
         else
+            display_errors(@user)
             render :new
         end
 
