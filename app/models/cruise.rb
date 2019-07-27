@@ -8,4 +8,6 @@ class Cruise < ApplicationRecord
     def children_allowed?
         min_age <= 12
     end
+
+    
 end

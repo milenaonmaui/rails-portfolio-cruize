@@ -4,10 +4,10 @@ class Booking < ApplicationRecord
 
     validates :num_adults, :numericality => {greater_than: 0, :message => "At least one adult must be present"}
     validates :num_children, :numericality => {greater_than_or_equal_to: 0, :message => "Can't be negative"}
-    validate :seats_available
+    validate :seats_available?
 
-    def seats_available
-        if num_adults + num_children < seats_left
+    def seats_available?
+        if num_adults + num_children > self.cruise.seats_left
             errors.add(:base, "Insufficient seats")
         end
     end
