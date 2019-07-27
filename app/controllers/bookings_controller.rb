@@ -18,7 +18,7 @@ class BookingsController < ApplicationController
            flash[:success] = "Booking created!"
            redirect_to booking_path(@booking)
         else
-           flash[:error] = "#{@booking.errors.messages.values.join(". ")}"
+           display_errors
            render :new
         end    
     end
@@ -37,8 +37,13 @@ class BookingsController < ApplicationController
 
     def update
         find_booking
-        @booking.update(booking_params)
-        redirect_to booking_path(@booking.cruise, @booking)
+        if @booking.update(booking_params)
+          flash[:success] = "Booking updated!"
+          redirect_to booking_path(@booking.cruise, @booking)
+        else
+          display_errors
+          render :edit
+        end
     end
 
     def destroy
@@ -59,5 +64,9 @@ class BookingsController < ApplicationController
                 flash[:error] = "Invalid booking!"
                 redirect_to user_path(current_user)
             end
+        end
+
+        def display_errors
+            flash[:error] = "#{@booking.errors.messages.values.join(". ")}"
         end
 end
