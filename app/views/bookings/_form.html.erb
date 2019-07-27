@@ -1,16 +1,21 @@
 
-<%= form_for @booking do |f|%>
+<%= form_for @booking, url: {action: "create"} do |f|%>
     <%= cruise_select(@booking.cruise, @booking) %>
     <div>
         <%=f.label :number_adults%>
     </div>
+    <div>
         <%=f.number_field :num_adults, min:0 %>
-    
+    </div>
     <% if @booking.cruise.children_allowed?%>
         <div>
             <%=f.label :number_children%>
+        </div>
+        <div>
             <%=f.number_field :num_children, min:0 %>
         </div>
     <%end%>
-    <%=f.submit "Submit"%>
+    <br>
+    <%=f.submit "Submit", class: "btn btn-primary"%>
+    
 <%end%>
