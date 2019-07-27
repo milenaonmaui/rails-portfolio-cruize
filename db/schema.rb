@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_23_174501) do
+ActiveRecord::Schema.define(version: 2019_07_27_001513) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer "cruise_id"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2019_07_23_174501) do
 
   create_table "cruises", force: :cascade do |t|
     t.string "name"
-    t.integer "capacity"
+    t.integer "seats_left"
     t.integer "price_child"
     t.integer "price_adult"
     t.integer "min_age"

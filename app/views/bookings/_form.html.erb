@@ -3,8 +3,9 @@
     <%= cruise_select(@booking.cruise, @booking) %>
     <div>
         <%=f.label :number_adults%>
-        <%=f.number_field :num_adults, min:0 %>
     </div>
+        <%=f.number_field :num_adults, min:0 %>
+    
     <% if @booking.cruise.children_allowed?%>
         <div>
             <%=f.label :number_children%>
