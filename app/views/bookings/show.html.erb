@@ -2,5 +2,5 @@
 <p>Adults: <%=@booking.num_adults %> </p>
 <p>Children: <%=@booking.num_children %></p>
 <p>Total cost: $<%=@booking.cost%></p>
-<%= link_to "Edit Booking", edit_booking_path(@booking)%>
+<%= link_to "Edit Booking", edit_booking_path(@booking)%><br>
 <%= link_to "Cancel Booking", @booking, method: :delete, data: { confirm: "Do you really want to cancel?" } %>
