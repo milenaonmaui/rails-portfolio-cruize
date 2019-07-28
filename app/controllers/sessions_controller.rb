@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
     end
 
     def welcome
+        @featured = Cruise.featured
     end
 
     def destroy

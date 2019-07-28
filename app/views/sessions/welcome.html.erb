@@ -1,6 +1,12 @@
 <h1>Welcome To Adventure Cruises </h1>
-
-<div class="cruise_list">
+<h2>Featured Cruises</h2>
+<%@featured.each do |cruise|%>
+    <div class="cruise_list">
+        <h3><%= link_to cruise.name, cruise_path(cruise)%></h3>
+    </div>
+<%end%>
+<br><br>
+<div >
     <h3><%= link_to "View All Cruises", cruises_path%></h3>
 
 </div>
