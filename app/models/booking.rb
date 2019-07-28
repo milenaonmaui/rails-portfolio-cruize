@@ -8,7 +8,7 @@ class Booking < ApplicationRecord
     validates :num_children, :numericality => {greater_than_or_equal_to: 0,  :allow_nil => true, :message => "Can't be negative"}
     validate :seats_available?
 
-    after_create :update_seats_left_new
+    #after_create :update_seats_left_new
     before_destroy :update_seats_left_destroy
     before_save :recalculate_seats_left
 
@@ -27,7 +27,7 @@ class Booking < ApplicationRecord
 
     def cost
         total = self.num_adults*self.cruise.price_adult
-        total += self.num_children*self.cruise.price_child if num_children
+        total += self.num_children*self.cruise.price_child.to_i if num_children>0
         return total
     end
 
@@ -42,10 +42,9 @@ class Booking < ApplicationRecord
     end
 
     def recalculate_seats_left
-        if (self.num_adults_changed? || self.num_children_changed?) && self.valid?
-            diff = self.num_adults + self.num_children.to_i - self.num_adults_was - self.num_children_was.to_i
+        if (self.num_adults_changed? || self.num_children_changed?) && self.valid?          
+            diff = self.num_adults.to_i + self.num_children.to_i - self.num_adults_was.to_i - self.num_children_was.to_i
             self.cruise.seats_left -= diff
-            binding.pry
             self.cruise.save
         end
     end

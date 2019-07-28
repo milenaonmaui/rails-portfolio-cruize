@@ -36,13 +36,10 @@ class BookingsController < ApplicationController
     end
 
     def update
-        binding.pry
-        find_booking
-        extra_seats = params[:booking][:num_adults].to_i - params[:booking][:num_children].to_i + @booking.seats_total
+        find_booking    
         if @booking.update(booking_params)
-           @booking.cruise.update(seats_left: (@booking.cruise.seats_left) + extra_seats)
            flash[:success] = "Booking updated!"
-           redirect_to booking_path(@booking.cruise, @booking)
+           redirect_to booking_path(@booking)
         else
           display_errors
           render :edit
