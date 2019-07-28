@@ -9,5 +9,4 @@ class Cruise < ApplicationRecord
         min_age <= 12
     end
 
-    
 end

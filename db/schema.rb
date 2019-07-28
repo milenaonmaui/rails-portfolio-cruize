@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_27_001513) do
+ActiveRecord::Schema.define(version: 2019_07_28_182754) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer "cruise_id"
     t.integer "user_id"
     t.integer "num_adults"
-    t.integer "num_children"
+    t.integer "num_children", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
