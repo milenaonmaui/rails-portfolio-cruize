@@ -6,9 +6,7 @@ class Booking < ApplicationRecord
 
     validates :num_adults, :numericality => {greater_than: 0, :message => "At least one adult must be present"}
     validates :num_children, :numericality => {greater_than_or_equal_to: 0,  :allow_nil => true, :message => "Can't be negative"}
-    validate :seats_available?
-
-    #after_create :update_seats_left_new
+      
     before_destroy :update_seats_left_destroy
     before_save :recalculate_seats_left
 
@@ -29,11 +27,6 @@ class Booking < ApplicationRecord
         total = self.num_adults*self.cruise.price_adult
         total += self.num_children*self.cruise.price_child.to_i if num_children>0
         return total
-    end
-
-    def update_seats_left_new
-        self.cruise.seats_left -= self.seats_total
-        self.cruise.save
     end
 
     def update_seats_left_destroy
