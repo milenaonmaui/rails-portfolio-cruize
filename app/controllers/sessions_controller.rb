@@ -16,6 +16,13 @@ class SessionsController < ApplicationController
         end
     end
 
+    def oauth_login
+        @user = User.find_or_create_by_omniauth(auth)
+        @user.save
+        session[:user_id]=@user.id
+        redirect_to cruises_path
+    end
+
     def welcome
         @featured = Cruise.featured
     end
@@ -24,4 +31,10 @@ class SessionsController < ApplicationController
         session.clear
         redirect_to '/'
     end
+
+    private
+
+        def  auth 
+            request.env['omniauth.auth']
+        end
 end

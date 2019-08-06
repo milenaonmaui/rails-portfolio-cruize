@@ -25,15 +25,16 @@
       </div>
         
     </div>
-    <div class = "container container-fluid">
-      <% flash.each do |key, value| %>
-        <div class="<%= flash_class(key) %>">
-            <%= value %>
+      <div class = "container container-fluid">
+        <% flash.each do |key, value| %>
+          <div class="<%= flash_class(key) %>">
+              <%= value %>
+          </div>
+        <% end %>
+        <div>
+          <%= yield %>
         </div>
-      <% end %>
-      <div>
-        <%= yield %>
       </div>
-    </div>
+    
   </body>
 </html>
