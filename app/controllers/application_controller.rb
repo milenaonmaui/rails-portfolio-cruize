@@ -1,11 +1,15 @@
 class ApplicationController < ActionController::Base
 
-    helper_method :logged_in?, :current_user, :flash_class
+    helper_method :logged_in?, :current_user, :flash_class, :admin?
 
     def logged_in?
         current_user
     end
 
+    def admin?
+        current_user.admin == true
+    end
+    
     def current_user
         current_user ||= User.find_by_id(session[:user_id])
     end

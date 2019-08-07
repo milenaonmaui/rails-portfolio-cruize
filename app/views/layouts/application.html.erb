@@ -16,8 +16,13 @@
         
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
         <%if logged_in?%>
-            <%= link_to "#{current_user.name}'s bookings", user_path(current_user), :class =>"navbar-brand"%>
+            <% if admin?%>
+              <%= link_to "Admin", cruises_path, :class =>"navbar-brand"%>
+            <%else%>
+              <%= link_to "#{current_user.name}'s bookings", user_path(current_user), :class =>"navbar-brand"%>
+            <%end%>
             <%= link_to "Log Out", logout_path, method: :delete, :class =>"navbar-brand"%>
+            
         <%else%>
             <a class="navbar-brand" href="<%= signup_url %>"/>Sign Up</a>
             <a class="navbar-brand" href="<%= login_url %>"/>Log In</a>
