@@ -1,0 +1,6 @@
+<h2>Bookings for <%=@cruise.name%>:</h2>
+<div class="cruise_list">
+    <%@bookings.each do |booking|%>
+        <p><%=booking.user.name%> - <%=booking.num_adults%> adults/<%=booking.num_children%> children</p>
+    <%end%>
+</div>

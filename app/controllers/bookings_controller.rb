@@ -28,7 +28,12 @@ class BookingsController < ApplicationController
     end
 
     def index
-        redirect_to user_path(current_user)
+        if admin?
+            @cruise = Cruise.find_by_id(params[:cruise_id])
+            @bookings = @cruise.bookings
+        else
+            redirect_to user_path(current_user)
+        end
     end
 
     def edit

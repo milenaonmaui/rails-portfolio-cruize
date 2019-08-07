@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :cruises, only: [:show, :index] do
-    resources :bookings, only: [:new]
+  resources :cruises do
+    resources :bookings, only: [:new, :index]
   end
   resources :users, only: [:new, :create, :show]
   resources :bookings

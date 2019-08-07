@@ -6,5 +6,9 @@
     <h3>Price Child: $<%= @cruise.price_child %></h3>
 <%end%>
 <h3>Seats Left: <%= @cruise.seats_left %></h3>
-<%= link_to "Book It", new_cruise_booking_path(@cruise), class: "btn btn-primary"%>
-   
+<%if admin?%>
+    <%= link_to "View Bookings", cruise_bookings_path(@cruise)%><br>
+    <%= link_to "Edit Cruise", edit_cruise_path(@cruise)%>
+<%else%>
+    <%= link_to "Book It", new_cruise_booking_path(@cruise), class: "btn btn-primary"%>
+<%end%>   
