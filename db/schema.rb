@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_28_182754) do
+ActiveRecord::Schema.define(version: 2019_08_07_211115) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer "cruise_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2019_07_28_182754) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.boolean "admin", default: false
   end
 
 end
