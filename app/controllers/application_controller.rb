@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     def admin?
         current_user.admin == true
     end
-    
+
     def current_user
         current_user ||= User.find_by_id(session[:user_id])
     end
@@ -33,6 +33,7 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    
     def display_errors(obj)
         flash[:error] = "#{obj.errors.full_messages.join(". ")}"
     end

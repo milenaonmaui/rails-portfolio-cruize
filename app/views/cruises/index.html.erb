@@ -1,5 +1,9 @@
-<h1>Select an Adventure Cruise or Filter by Category</h1>
-
+<%if admin?%>
+   <h2>All Cruises</h2>
+   <%=link_to "New Cruise", new_cruise_path, class: "btn btn-primary"%>
+<%else%>
+    <h1>Select an Adventure Cruise or Filter by Category</h1>
+<%end%>
 <%= form_tag cruises_path, :method => 'get' do %>
     <% Category.all.each do |category| %>
       <%= check_box_tag "categories[]", category.id, false, class: 'checkbox-inline' %>
