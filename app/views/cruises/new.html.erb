@@ -1,25 +1,2 @@
-<%= form_for(@cruise) do |f|%>
-    <%=f.label :name%>
-    <%=f.text_field :name%>
-    <br>
-    <%=f.label :seats_total%>
-    <%=f.number_field :seats_left, min:0 %>
-    <br>
-    <%= f.label :price_child%>
-    $<%=f.number_field :price_child, min:0 %>
-    <br>
-    <%= f.label :price_adult%>
-    $<%=f.number_field :price_adult, min:0 %>
-    <br>
-    <%= f.label :min_age%>
-    <%=f.number_field :min_age, min:0 %>
-    <%=f.label :category_id, "Category"%>
-    <%=f.collection_select :category_id, Category.all, :id, :name%>
-    <br>
-    <p>New Category:</p>
-    <%=f.fields_for :category, @cruise.build_category do |c| %>
-       <%=c.label :name %>
-       <%=c.text_field :name%>
-    <%end%>
-    <%=f.submit "Submit", class: "btn btn-primary"%>
-<%end%>
+<h1>New Cruise</h1>
+<%= render partial: "cruise_form" %>
