@@ -17,7 +17,6 @@ class CruisesController < ApplicationController
     end
 
     def create
-        binding.pry
         @cruise = Cruise.new(cruise_params)
         if @cruise.save
             redirect_to cruise_path(@cruise)
