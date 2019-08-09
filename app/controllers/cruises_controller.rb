@@ -1,4 +1,6 @@
 class CruisesController < ApplicationController
+    before_action :require_admin
+    skip_before_action :require_admin, only: [:show, :index]
 
     def index
         
@@ -67,6 +69,13 @@ class CruisesController < ApplicationController
             if !@cruise
                 flash[:error] = "Invalid cruise!"
                 redirect_to user_path(current_user)
+            end
+        end
+
+        def require_admin
+            unless admin?
+                flash[:error] = "You are not authorized to view this page."
+                redirect_to root_path
             end
         end
 end
