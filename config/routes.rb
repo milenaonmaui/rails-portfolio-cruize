@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   root 'sessions#welcome'
   delete '/logout' => 'sessions#destroy'
   get 'auth/google_oauth2/callback' => 'sessions#oauth_login'
+  get '/scoreboard' => 'users#scoreboard'
 end

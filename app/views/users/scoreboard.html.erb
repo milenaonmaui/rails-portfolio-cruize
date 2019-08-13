@@ -1,0 +1,5 @@
+<h1>Most active users</h1>
+
+<%@most_active.each do |user|%> 
+    <p><%=user.name%>, <%=user.bookings.size%> bookings</p>
+<%end%>
